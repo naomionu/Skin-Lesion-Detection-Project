@@ -1,4 +1,4 @@
-# MobileNetV3-Large: Model background and proposed background
+# MobileNetV3-Large: Model background and proposed pipeline
 
 ## Model Background
 MobileNetV3 is a lightweight CNN architecture developed by Google for efficient computer vision on mobile and resource-constrained devices. It builds on earlier MobileNet architectures and uses techniques such as depthwise separable convolutions, inverted residual blocks, squeeze-and-excitation modules, and hardware-aware architecture optimization to reduce computational requirements while maintaining strong image classification performance. 

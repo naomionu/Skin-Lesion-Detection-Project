@@ -1,10 +1,10 @@
 # MobileNetV3-Large: Model background and proposed pipeline
 
-## Model Background
+## Model background
 MobileNetV3 is a lightweight CNN architecture developed by Google for efficient computer vision on mobile and resource-constrained devices. It builds on earlier MobileNet architectures and uses techniques such as depthwise separable convolutions, inverted residual blocks, squeeze-and-excitation modules, and hardware-aware architecture optimization to reduce computational requirements while maintaining strong image classification performance. 
 
 Two main versions of the architecture are available: MobileNetV3-Small and MobileNetV3-Large. MobileNetV3-Small is intended for highly resource-constrained environments, while MobileNetV3-Large provides greater model capacity while remaining substantially more computationally efficient than many conventional CNN architectures. MobileNetV3-Large contains approximately 5.5 million parameters, making it relatively compact compared with many standard image classification models. For this specific project, I think it would be more appropriate to use MobileNetV3-Large because the objective is not only to achieve accurate melanoma/skin lesion classification, but also to develop a model that can eventually operate offline on low-power edge hardware such as a Raspberry Pi. The additional capacity of the Large architecture may also be beneficial for identifying subtle visual characteristics of skin lesions, such as differences in colour, texture, shape, and border irregularity, while still maintaining relatively low computational requirements.
 
 MobileNetV3-Large also supports transfer learning, allowing pretrained ImageNet weights to be used as a starting point rather than training the model entirely from scratch. This is particularly relevant to this project because one of the objectives is to achieve reliable performance with limited training data. Its relatively small size also makes it suitable for further optimization through techniques such as INT8 quantization, which can reduce storage and computational requirements for eventual edge deployment.
 
-## Proposed Pipeline
+## Proposed pipeline

@@ -7,4 +7,18 @@ Two main versions of the architecture are available: MobileNetV3-Small and Mobil
 
 MobileNetV3-Large also supports transfer learning, allowing pretrained ImageNet weights to be used as a starting point rather than training the model entirely from scratch. This is particularly relevant to this project because one of the objectives is to achieve reliable performance with limited training data. Its relatively small size also makes it suitable for further optimization through techniques such as INT8 quantization, which can reduce storage and computational requirements for eventual edge deployment.
 
-## Proposed pipeline
+## Tentative pipeline
+The pipeline will use an ImageNet-pretrained MobileNetV3-Large with transfer learning for melanoma classification.
+
+1. Preprocessing and augmentation: images will be resized to 224 × 224 and normalized. Augmentations such as rotation, flipping, brightness changes, blur, and compression will help reduce overfitting and simulate lower-quality images.
+
+2. Transfer learning: a MobileNetV3-Large model pretrained on ImageNet will be used so the model can build on features it has already learned, such as shapes, edges, colours, and textures. Initially, the pretrained layers will be frozen while a new classification layer is trained for melanoma/skin lesion detection. Some of the later layers will then be unfrozen and fine-tuned to better recognize features specific to skin lesions.
+
+3. Evaluation: performance will be measured using metrics such as ROC-AUC, sensitivity, specificity, F1-score, and accuracy. Robustness will also be evaluated using reduced training data and degraded test images.
+
+4. Explainability: Grad-CAM will generate heatmaps highlighting image regions that contributed most strongly to the model's prediction.
+
+5. Optimization and deployement: the trained model will undergo INT8 quantization to reduce model size and computational requirements. The optimized model will then be deployed for offline inference on a Raspberry Pi.
+
+# Pipeline Overview
+Skin image -> Preprocessing/augmentation -> MobileNetV3-Large -> Melanoma/skin lesion prediction -> Grad-CAM -> INT8 quantization -> Raspberry Pi deployment
